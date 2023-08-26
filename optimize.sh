@@ -144,22 +144,22 @@ while true; do
             clear
             ;;
         6)
-            show_system_info
+            change_dns_servers
             sleep 1
             read -p "Press Enter to continue..."
             clear
             ;;
         7)
-        change_dns_servers
-        sleep 1
-        read -p "Press Enter to continue..."
-        clear
-        ;;
+            show_system_info
+            sleep 1
+            read -p "Press Enter to continue..."
+            clear
+            ;;
         
-    8)
-        echo "Exiting."
-        exit 0
-        ;;
+        8)
+            echo "Exiting."
+            exit 0
+            ;;
         
     *)
         echo -e "${RED}Invalid choice. Please select a valid option.${NC}"
