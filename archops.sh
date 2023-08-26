@@ -10,8 +10,6 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-sleep 4
-
 
 SCRIPT_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt") # Script Version
 
@@ -48,6 +46,8 @@ function display_menu {
 }
 
 check_new_version
+
+display_welcome
 
 sleep 1
 
