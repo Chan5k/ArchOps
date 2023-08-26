@@ -15,18 +15,18 @@ function display_welcome {
 function display_menu {
     clear
     echo "ArchOps Menu"
-    echo "0. Check for Updates"
-    echo "1. Disable firewall"
-    echo "2. Enable firewall"
-    echo "3. Show free disk space"
-    echo "4. Show IP address"
-    echo "5. Show DNS Servers in use"
-    echo "6. Network Testing"
-    echo "7. Show System Information"
-    echo "8. Change DNS Servers"
-    echo "9. Update system packages"
-    echo "10. Security Hardening"
-    echo "11. Exit"
+    echo "1. Check for Updates"
+    echo "2. Disable firewall"
+    echo "3. Enable firewall"
+    echo "4. Show free disk space"
+    echo "5. Show IP address"
+    echo "6. Show DNS Servers in use"
+    echo "7. Network Testing"
+    echo "8. Show System Information"
+    echo "9. Change DNS Servers"
+    echo "10. Update system packages"
+    echo "11. Update Script"
+    echo "12. Exit"
 }
 
 
@@ -46,6 +46,15 @@ function check_new_version {
 }
 
 check_new_version
+
+function update_script {
+    echo "Updating ArchOps..."
+    curl -o archops.sh -L "https://github.com/Chan5k/beta-so/blob/main/archops.sh"
+    chmod +x archops.sh
+    echo "Update complete. Please restart the script."
+    exit 0
+}
+
 
 function security_hardening {
     clear
@@ -289,7 +298,13 @@ while true; do
         10)
             security_hardening
             ;;
+
         11)
+            update_script
+            sleep 3
+            ;;
+
+        12)
             echo "Exiting."
             exit 0
             ;;
