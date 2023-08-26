@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ "$EUID" -ne 0 ]; then
+    echo "This script must be run with sudo. Example: sudo ./archops.sh"
+    exit 1
+fi
+
+
+
 SCRIPT_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt") # Script Version
 
 # ANSI color codes
@@ -8,7 +15,10 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 function display_welcome {
-    echo "ArchOps Utility (Version: $SCRIPT_VERSION)"
+    echo "ArchOps Utility (Version: $SCRIPT_VERSION)
+
+Loading..."
+
     sleep 2
 }
 
