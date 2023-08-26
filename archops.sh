@@ -47,8 +47,6 @@ function display_menu {
 
 display_welcome
 
-sleep 5
-
 function check_new_version {
     echo "Checking for updates..."
     
