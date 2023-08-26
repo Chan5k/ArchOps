@@ -7,7 +7,7 @@ function display_menu {
     echo "3. Show free disk space"
     echo "4. Show IP address"
     echo "5. Show DNS Servers in use"
-    echo "6. Exit"
+    echo "6. Exit program."
 }
 
 while true; do
