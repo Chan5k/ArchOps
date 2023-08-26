@@ -173,7 +173,7 @@ while true; do
             clear
             ;;
         6)
-            change_dns_servers
+            network_testing
             sleep 1
             read -p "Press Enter to continue..."
             clear
@@ -184,17 +184,21 @@ while true; do
             read -p "Press Enter to continue..."
             clear
             ;;
-        
         8)
+            change_dns_servers
+            sleep 1
+            read -p "Press Enter to continue..."
+            clear
+            ;;
+        9)
             echo "Exiting."
             exit 0
             ;;
-        
-    *)
-        echo -e "${RED}Invalid choice. Please select a valid option.${NC}"
-        sleep 1
-        read -p "Press Enter to continue..."
-        clear
-        ;;
+        *)
+            echo -e "${RED}Invalid choice. Please select a valid option.${NC}"
+            sleep 1
+            read -p "Press Enter to continue..."
+            clear
+            ;;
     esac
 done
