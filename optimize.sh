@@ -12,12 +12,10 @@ function display_menu {
 
 while true; do
     display_menu
-
     read -p "Enter your choice: " choice
 
     case $choice in
         1)
-            # Check if firewalld is installed
             if command -v firewalld &>/dev/null; then
                 sudo systemctl stop firewalld
                 echo "Firewall (firewalld) disabled successfully."
@@ -32,10 +30,8 @@ while true; do
             fi
             sleep 1
             clear
-            display_menu
             ;;
         2)
-            # Check if firewalld is installed
             if command -v firewalld &>/dev/null; then
                 sudo systemctl start firewalld
                 echo "Firewall (firewalld) enabled successfully."
@@ -50,25 +46,24 @@ while true; do
             fi
             sleep 1
             clear
-            display_menu
             ;;
         3)
             df -h
             sleep 1
+            read -p "Press Enter to continue..."
             clear
-            display_menu
             ;;
         4)
             ip addr show
             sleep 1
+            read -p "Press Enter to continue..."
             clear
-            display_menu
             ;;
         5)
             cat /etc/resolv.conf
             sleep 1
+            read -p "Press Enter to continue..."
             clear
-            display_menu
             ;;
         6)
             echo "Exiting."
@@ -78,7 +73,6 @@ while true; do
             echo "Invalid choice. Please select a valid option."
             sleep 1
             clear
-            display_menu
             ;;
     esac
 done
