@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# ANSI color codes
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
 function display_menu {
     echo "Select an action:"
     echo "1. Disable firewall"
@@ -7,7 +11,7 @@ function display_menu {
     echo "3. Show free disk space"
     echo "4. Show IP address"
     echo "5. Show DNS Servers in use"
-    echo "6. Exit."
+    echo "6. Exit"
 }
 
 while true; do
@@ -19,13 +23,13 @@ while true; do
             if command -v firewalld &>/dev/null; then
                 echo "Disabling firewall (firewalld)..."
                 sudo systemctl stop firewalld
-                echo "Firewall (firewalld) disabled successfully."
+                echo -e "${GREEN}Firewall (firewalld) disabled successfully.${NC}"
             else
                 read -p "Firewalld is not installed. Do you use UFW? (y/n): " ufw_choice
                 if [ "$ufw_choice" == "y" ]; then
                     echo "Disabling UFW firewall..."
                     sudo ufw disable
-                    echo "UFW firewall disabled successfully."
+                    echo -e "${GREEN}UFW firewall disabled successfully.${NC}"
                 else
                     echo "No action taken."
                 fi
@@ -38,13 +42,13 @@ while true; do
             if command -v firewalld &>/dev/null; then
                 echo "Enabling firewall (firewalld)..."
                 sudo systemctl start firewalld
-                echo "Firewall (firewalld) enabled successfully."
+                echo -e "${GREEN}Firewall (firewalld) enabled successfully.${NC}"
             else
                 read -p "Firewalld is not installed. Do you use UFW? (y/n): " ufw_choice
                 if [ "$ufw_choice" == "y" ]; then
                     echo "Enabling UFW firewall..."
                     sudo ufw enable
-                    echo "UFW firewall enabled successfully."
+                    echo -e "${GREEN}UFW firewall enabled successfully.${NC}"
                 else
                     echo "No action taken."
                 fi
