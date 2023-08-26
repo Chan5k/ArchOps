@@ -29,6 +29,7 @@ function network_testing {
     echo "Select a network testing option:"
     echo "1. Ping a Host"
     echo "2. Traceroute to a Host"
+    echo "3. Speedtest"
     read -p "Enter your choice: " network_choice
 
     case $network_choice in
@@ -39,6 +40,18 @@ function network_testing {
         2)
             read -p "Enter a host to traceroute: " host_to_trace
             traceroute $host_to_trace
+            ;;
+        3)
+            if command -v speedtest &>/dev/null; then
+                speedtest
+            else
+                read -p "speedtest-cli is not installed. Do you want to install it? (y/n): " install_speedtest
+                if [ "$install_speedtest" == "y" ]; then
+                    sudo pacman -S speedtest-cli
+                else
+                    echo "No action taken."
+                fi
+            fi
             ;;
         *)
             echo -e "${RED}Invalid choice.${NC}"
