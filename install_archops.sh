@@ -30,8 +30,5 @@ curl -o "$SCRIPT_DIR/archops.sh" -L "https://raw.githubusercontent.com/Chan5k/Ar
 curl -o "$SCRIPT_DIR/version.txt" -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/install_archops.sh"
 chmod +x "$SCRIPT_DIR/archops.sh"
 
-# Add cron job for background updates
-(crontab -l ; echo "0 3 * * * $SCRIPT_DIR/archops.sh --update") | crontab -
-
 echo "ArchOps installation complete."
 touch archops_installed
