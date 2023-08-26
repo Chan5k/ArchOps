@@ -13,7 +13,8 @@ function display_welcome {
 }
 
 function display_menu {
-    echo "Select an action:"
+    clear
+    echo "ArchOps Menu"
     echo "0. Update Script"
     echo "1. Disable firewall"
     echo "2. Enable firewall"
@@ -189,8 +190,8 @@ while true; do
 
     case $choice in
         0)
-        update_script
-        ;;
+            update_script
+            ;;
 
     case $choice in
         1)
