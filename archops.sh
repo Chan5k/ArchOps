@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 
 function display_welcome {
     echo "ArchOps Script - Version $VERSION"
-    sleep 1
+    sleep 3
 }
 
 function display_menu {
@@ -33,7 +33,7 @@ function display_menu {
 
 display_welcome
 
-
+sleep 3
 function check_new_version {
     remote_version=$(curl -s "https://raw.githubusercontent.com/Chan5k/beta-so/main/version.txt")
 
@@ -183,7 +183,7 @@ while true; do
         case $choice in
         0)
             check_new_version
-            sleep 2
+            sleep 3
             ;;
         1)
             if command -v firewalld &>/dev/null; then
