@@ -35,8 +35,14 @@ display_welcome
 function check_new_version {
     remote_version=$(curl -s "https://raw.githubusercontent.com/Chan5k/beta-so/main/version.txt")
     
-    if [[ "$remote_version" == "$VERSION" ]]; then
+    # Extract numeric part of local and remote versions
+    local_version_numeric=$(echo "$VERSION" | grep -o '[0-9.]*')
+    remote_version_numeric=$(echo "$remote_version" | grep -o '[0-9.]*')
+
+    if [[ "$local_version_numeric" == "$remote_version_numeric" ]]; then
         echo "You are using the latest version of the script."
+    elif [[ "$local_version_numeric" > "$remote_version_numeric" ]]; then
+        echo "You are using a newer version ($VERSION) than the remote version ($remote_version)."
     else
         echo "A new version ($remote_version) is available!"
         echo "Visit the repository for more information."
