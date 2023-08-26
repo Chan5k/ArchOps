@@ -12,8 +12,8 @@ function display_menu {
     echo "3. Show free disk space"
     echo "4. Show IP address"
     echo "5. Show DNS Servers in use"
-    echo "6. Show System Information"
-    echo "7. Change DNS Servers"
+    echo "6. Change DNS Servers"
+    echo "7. Show System Information."
     echo "8. Exit"
 }
 
