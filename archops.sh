@@ -49,8 +49,6 @@ function display_menu {
 
 check_new_version
 
-display_welcome
-
 sleep 1
 
 function check_new_version {
