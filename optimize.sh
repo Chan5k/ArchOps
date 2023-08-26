@@ -17,13 +17,21 @@ function display_menu {
     echo "3. Show free disk space"
     echo "4. Show IP address"
     echo "5. Show DNS Servers in use"
-    echo "6. Network Testing"
-    echo "7. Show System Information"
-    echo "8. Change DNS Servers"
-    echo "9. Exit"
+    echo "6. Change DNS Servers"
+    echo "7. Network Testing"
+    echo "8. Show System Information"
+    echo "9. Update system packages"
+    echo "10. Exit"
 }
 
+
+
 display_welcome
+
+function system_update {
+    echo "Updating system packages..."
+    sudo pacman -Syu
+}
 
 function network_testing {
     echo "Select a network testing option:"
@@ -204,6 +212,13 @@ while true; do
             clear
             ;;
         9)
+            system_update
+            sleep 1
+            read -p "Press Enter to continue..."
+            clear
+            ;;
+
+        10)
             echo "Exiting."
             exit 0
             ;;
