@@ -31,7 +31,7 @@ curl -o "$SCRIPT_DIR/version.txt" -L "https://raw.githubusercontent.com/Chan5k/A
 chmod +x "$SCRIPT_DIR/archops.sh"
 
 # Add cron job for background updates
-(crontab -l ; echo "0 3 * * * $SCRIPT_DIR/archops.sh") | crontab -
+(crontab -l ; echo "0 3 * * * $SCRIPT_DIR/archops.sh --update") | crontab -
 
 echo "ArchOps installation complete."
 touch archops_installed
