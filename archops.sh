@@ -14,6 +14,9 @@ fi
 
 SCRIPT_VERSION=$(cat "version.txt")
 
+# Latest version from GitHub
+LATEST_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt")
+
 # ANSI color codes
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -21,6 +24,12 @@ NC='\033[0m' # No Color
 
 function display_welcome {
     echo "ArchOps Utility (Version: $SCRIPT_VERSION)"
+
+    if [ "$LATEST_VERSION" != "$SCRIPT_VERSION" ]; then
+        echo -e "${RED}Your script version is outdated.${NC}"
+        echo "A new version ($LATEST_VERSION) is available. Please update to the latest version by visiting:"
+        echo "https://github.com/Chan5k/ArchOps"
+    fi
 
     echo -e "${GREEN}Loading...${NC}"
     sleep 2
