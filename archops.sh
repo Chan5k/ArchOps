@@ -1,6 +1,9 @@
 #!/bin/bash
 
-##test string
+if [ "$1" == "--update" ]; then
+    update_script
+fi
+
 
 if [ ! -f "archops_installed" ] || [ ! -f "archops.sh" ] || [ ! -f "version.txt" ]; then
     echo "Please run the installer (install_archops.sh) before using ArchOps."
