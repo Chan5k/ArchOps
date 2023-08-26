@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.1.2"
+SCRIPT_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/beta-so/main/version.txt")
 
 # ANSI color codes
 GREEN='\033[0;32m'
@@ -8,7 +8,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 function display_welcome {
-    echo "ArchOps Script - Version $VERSION"
+    echo "ArchOps Menu (Version: $SCRIPT_VERSION)"
     sleep 2
 }
 
@@ -34,15 +34,15 @@ function display_menu {
 
 display_welcome
 
-sleep 2
-function check_new_version {
-    remote_version=$(curl -s "https://raw.githubusercontent.com/Chan5k/beta-so/main/version.txt")
+sleep 1
 
-    if [[ "$remote_version" == "$VERSION" ]]; then
-        echo "You are using the latest version of the script."
+function check_new_version {
+    LATEST_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/beta-so/main/version.txt")
+
+    if [ "$LATEST_VERSION" != "$SCRIPT_VERSION" ]; then
+        echo -e "${YELLOW}A new version ($LATEST_VERSION) is available.${NC}"
     else
-        echo "A new version ($remote_version) is available!"
-        echo "Visit the repository for more information and to update: https://github.com/Chan5k/beta-so"
+        echo "You are using the latest version ($SCRIPT_VERSION)."
     fi
 }
 
