@@ -17,12 +17,34 @@ function display_menu {
     echo "3. Show free disk space"
     echo "4. Show IP address"
     echo "5. Show DNS Servers in use"
-    echo "6. Show System Information"
-    echo "7. Change DNS Servers"
-    echo "8. Exit"
+    echo "6. Network Testing"
+    echo "7. Show System Information"
+    echo "8. Change DNS Servers"
+    echo "9. Exit"
 }
 
 display_welcome
+
+function network_testing {
+    echo "Select a network testing option:"
+    echo "1. Ping a Host"
+    echo "2. Traceroute to a Host"
+    read -p "Enter your choice: " network_choice
+
+    case $network_choice in
+        1)
+            read -p "Enter a host to ping: " host_to_ping
+            ping -c 4 $host_to_ping
+            ;;
+        2)
+            read -p "Enter a host to traceroute: " host_to_trace
+            traceroute $host_to_trace
+            ;;
+        *)
+            echo -e "${RED}Invalid choice.${NC}"
+            ;;
+    esac
+}
 
 function change_dns_servers {
     echo "Select DNS Servers:"
