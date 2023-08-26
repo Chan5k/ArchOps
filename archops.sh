@@ -47,7 +47,7 @@ function display_menu {
     echo "14. Exit"
 }
 
-
+check_new_version
 
 display_welcome
 
