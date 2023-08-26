@@ -14,7 +14,7 @@ ArchOps is a Bash script for managing and optimizing Arch Linux systems. It prov
 - Update system packages
 - Security Hardening
 - Check for Updates
-- Exit
+- User Management
 
 ## Getting Started
 
