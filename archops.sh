@@ -25,8 +25,9 @@ function display_menu {
     echo "8. Show System Information"
     echo "9. Change DNS Servers"
     echo "10. Update system packages"
-    echo "11. Update Script"
-    echo "12. Exit"
+    echo "11. Security Hardening"
+    echo "12. Update Script"
+    echo "13. Exit"
 }
 
 
@@ -190,11 +191,11 @@ while true; do
     read -p "Enter your choice: " choice
 
         case $choice in
-        0)
+        1)
             check_new_version
             sleep 3
             ;;
-        1)
+        2)
             if command -v firewalld &>/dev/null; then
                 read -p "Are you sure you want to disable the firewall (firewalld)? (y/n): " confirm
                 if [ "$confirm" == "y" ]; then
@@ -223,7 +224,7 @@ while true; do
             read -p "Press Enter to continue..."
             clear
             ;;
-        2)
+        3)
             if command -v firewalld &>/dev/null; then
                 read -p "Are you sure you want to enable the firewall (firewalld)? (y/n): " confirm
                 if [ "$confirm" == "y" ]; then
@@ -252,59 +253,59 @@ while true; do
             read -p "Press Enter to continue..."
             clear
             ;;
-        3)
+        4)
             df -h
             sleep 1
             read -p "Press Enter to continue..."
             clear
             ;;
-        4)
+        5)
             ip addr show
             sleep 1
             read -p "Press Enter to continue..."
             clear
             ;;
-        5)
+        6)
             cat /etc/resolv.conf
             sleep 1
             read -p "Press Enter to continue..."
             clear
             ;;
-        6)
+        7)
             network_testing
             sleep 1
             read -p "Press Enter to continue..."
             clear
             ;;
-        7)
+        8)
             show_system_info
             sleep 1
             read -p "Press Enter to continue..."
             clear
             ;;
-        8)
+        9)
             change_dns_servers
             sleep 1
             read -p "Press Enter to continue..."
             clear
             ;;
-        9)
+        10)
             system_update
             sleep 1
             read -p "Press Enter to continue..."
             clear
             ;;
 
-        10)
+        11)
             security_hardening
             ;;
 
-        11)
+        12)
             update_script
             sleep 3
             ;;
 
-        12)
+        13)
             echo "Exiting."
             exit 0
             ;;
