@@ -49,7 +49,7 @@ check_new_version
 
 display_welcome
 
-sleep 1
+sleep 5
 
 function check_new_version {
     echo "Checking for updates..."
