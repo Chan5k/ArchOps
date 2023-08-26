@@ -76,9 +76,6 @@ function check_new_version {
     fi
 }
 
-
-check_new_version
-
 function update_script {
     echo "Updating ArchOps..."
     curl -o archops.sh -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/archops.sh"
