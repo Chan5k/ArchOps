@@ -45,8 +45,6 @@ function display_menu {
     echo "14. Exit"
 }
 
-check_new_version
-
 display_welcome
 
 sleep 5
@@ -72,6 +70,9 @@ function check_new_version {
         echo "You are already using the latest version."
     fi
 }
+
+check_new_version
+
 
 function update_script {
     echo "Updating ArchOps..."
