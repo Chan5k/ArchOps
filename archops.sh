@@ -54,12 +54,28 @@ display_welcome
 sleep 1
 
 function check_new_version {
-    LATEST_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt")
+    echo "Checking for updates..."
+    
+    local remote_version=$(curl -s -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt")
+    local local_version=$(cat "$SCRIPT_DIR/version.txt")
+    
+    local remote_checksum=$(curl -sL "https://raw.githubusercontent.com/Chan5k/ArchOps/main/archops.sh" | sha256sum | awk '{ print $1 }')
+    local local_checksum=$(sha256sum "$SCRIPT_DIR/archops.sh" | awk '{ print $1 }')
 
-    if [ "$LATEST_VERSION" != "$SCRIPT_VERSION" ]; then
-        echo -e "${YELLOW}A new version ($LATEST_VERSION) is available.${NC}"
+    if [ "$remote_version" != "$local_version" ] || [ "$remote_checksum" != "$local_checksum" ]; then
+        echo "A new version is available: $remote_version"
+        read -p "Do you want to update to the latest version? (y/n): " update_choice
+        if [ "$update_choice" == "y" ]; then
+            echo "Updating..."
+            curl -o "$SCRIPT_DIR/archops.sh" -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/archops.sh"
+            chmod +x "$SCRIPT_DIR/archops.sh"
+            echo "$remote_version" > "$SCRIPT_DIR/version.txt"
+            echo "Update complete."
+        else
+            echo "No update performed."
+        fi
     else
-        echo "You are using the latest version ($SCRIPT_VERSION)."
+        echo "You are already using the latest version."
     fi
 }
 
