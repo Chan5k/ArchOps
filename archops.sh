@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 
 function display_welcome {
     echo "ArchOps Script - Version $VERSION"
-    sleep 3
+    sleep 2
 }
 
 function display_menu {
@@ -33,7 +33,7 @@ function display_menu {
 
 display_welcome
 
-sleep 3
+sleep 2
 function check_new_version {
     remote_version=$(curl -s "https://raw.githubusercontent.com/Chan5k/beta-so/main/version.txt")
 
