@@ -42,7 +42,8 @@ function display_menu {
     echo "10. Update system packages"
     echo "11. Security Hardening"
     echo "12. Update Script"
-    echo "13. Exit"
+    echo "13. User Management"
+    echo "14. Exit"
 }
 
 
@@ -70,6 +71,36 @@ function update_script {
     chmod +x archops.sh
     echo "Update complete. Please restart the script."
     exit 0
+}
+
+function user_account_management {
+    clear
+    echo "User Account Management"
+    echo "1. Add User"
+    echo "2. Remove User"
+    read -p "Enter your choice: " user_choice
+
+    case $user_choice in
+        1)
+            read -p "Enter username: " username
+            read -s -p "Enter password: " password
+            echo
+            sudo useradd -m $username
+            echo "$username:$password" | sudo chpasswd
+            sudo usermod -aG wheel $username  # Add user to the wheel group
+            echo "User $username added with password and sudo permissions."
+            ;;
+        2)
+            read -p "Enter username: " username
+            sudo userdel -r $username 2>/dev/null
+            echo "User $username removed."
+            ;;
+        *)
+            echo "Invalid choice."
+            ;;
+    esac
+
+    sleep 2
 }
 
 
@@ -322,6 +353,9 @@ while true; do
             ;;
 
         13)
+            user_account_management
+            ;;
+        14)
             echo "Exiting."
             exit 0
             ;;
