@@ -5,6 +5,11 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+function display_welcome {
+    echo "Welcome to ArchOps!"
+    sleep 1
+}
+
 function display_menu {
     echo "Select an action:"
     echo "1. Disable firewall"
@@ -12,10 +17,12 @@ function display_menu {
     echo "3. Show free disk space"
     echo "4. Show IP address"
     echo "5. Show DNS Servers in use"
-    echo "6. Change DNS Servers"
-    echo "7. Show System Information."
+    echo "6. Show System Information"
+    echo "7. Change DNS Servers"
     echo "8. Exit"
 }
+
+display_welcome
 
 function change_dns_servers {
     echo "Select DNS Servers:"
