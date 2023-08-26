@@ -13,14 +13,34 @@ while true; do
 
     case $choice in
         1)
-            sudo systemctl stop iptables
-            sudo systemctl stop firewalld
-            echo "Firewall disabled."
+            # Check if firewalld is installed
+            if command -v firewalld &>/dev/null; then
+                sudo systemctl stop firewalld
+                echo "Firewall (firewalld) disabled."
+            else
+                read -p "Firewalld is not installed. Do you use UFW? (y/n): " ufw_choice
+                if [ "$ufw_choice" == "y" ]; then
+                    sudo ufw disable
+                    echo "UFW firewall disabled."
+                else
+                    echo "No action taken."
+                fi
+            fi
             ;;
         2)
-            sudo systemctl start iptables
-            sudo systemctl start firewalld
-            echo "Firewall enabled."
+            # Check if firewalld is installed
+            if command -v firewalld &>/dev/null; then
+                sudo systemctl start firewalld
+                echo "Firewall (firewalld) enabled."
+            else
+                read -p "Firewalld is not installed. Do you use UFW? (y/n): " ufw_choice
+                if [ "$ufw_choice" == "y" ]; then
+                    sudo ufw enable
+                    echo "UFW firewall enabled."
+                else
+                    echo "No action taken."
+                fi
+            fi
             ;;
         3)
             df -h
