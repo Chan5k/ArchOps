@@ -12,7 +12,7 @@ fi
 
 
 
-SCRIPT_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt")
+SCRIPT_VERSION=$(cat "version.txt")
 
 # ANSI color codes
 GREEN='\033[0;32m'
@@ -20,10 +20,9 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 function display_welcome {
-    echo "ArchOps Utility (Version: $SCRIPT_VERSION)
+    echo "ArchOps Utility (Version: $SCRIPT_VERSION)"
 
-Loading..."
-
+    echo -e "${GREEN}Loading...${NC}"
     sleep 2
 }
 
@@ -45,8 +44,6 @@ function display_menu {
     echo "13. Exit"
 }
 
-
-
 display_welcome
 
 sleep 1
@@ -62,6 +59,45 @@ function check_new_version {
 }
 
 check_new_version
+
+function manage_users {
+    echo "User Account Management"
+    echo "1. Create User"
+    echo "2. Remove User"
+    echo "3. Back to Main Menu"
+    read -p "Enter your choice: " user_choice
+
+    case $user_choice in
+        1)
+            read -p "Enter username for the new user: " new_username
+            read -s -p "Enter password for $new_username: " new_user_password
+            echo
+
+            # Create user and set password
+            sudo useradd -m -G sudo "$new_username"
+            echo "$new_username:$new_user_password" | sudo chpasswd
+
+            echo "User $new_username created."
+            sleep 1
+            ;;
+        2)
+            read -p "Enter username to remove: " username_to_remove
+            sudo userdel -r "$username_to_remove"
+
+            echo "User $username_to_remove removed."
+            sleep 1
+            ;;
+        3)
+            echo "Returning to Main Menu..."
+            sleep 1
+            return
+            ;;
+        *)
+            echo "Invalid choice. Please select a valid option."
+            sleep 1
+            ;;
+    esac
+}
 
 function update_script {
     echo "Updating ArchOps..."
@@ -321,10 +357,9 @@ while true; do
             sleep 3
             ;;
 
-        13)
-            echo "Exiting."
+        13) echo "Exiting."
             exit 0
-            ;;
+            ;;    
     *)
         echo -e "${RED}Invalid choice. Please select a valid option.${NC}"
         sleep 1
