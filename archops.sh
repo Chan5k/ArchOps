@@ -1,6 +1,5 @@
 #!/bin/bash
 
-##test
 
 if [ ! -f "archops_installed" ] || [ ! -f "archops.sh" ] || [ ! -f "version.txt" ]; then
     echo "Please run the installer (install_archops.sh) before using ArchOps."
