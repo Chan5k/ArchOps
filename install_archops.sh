@@ -26,7 +26,6 @@ sudo pacman -Syu --noconfirm
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 # Download ArchOps script and version.txt
-curl -o "$SCRIPT_DIR/archops.sh" -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/archops.sh"
 chmod +x "$SCRIPT_DIR/archops.sh"
 
 # Add cron job for background updates
