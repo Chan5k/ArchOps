@@ -1,12 +1,14 @@
 #!/bin/bash
 
+VERSION="1.0"
+
 # ANSI color codes
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 function display_welcome {
-    echo "Welcome to ArchOps!"
+    echo "ArchOps Script - Version $VERSION"
     sleep 1
 }
 
