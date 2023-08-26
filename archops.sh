@@ -15,7 +15,7 @@ function display_welcome {
 function display_menu {
     clear
     echo "ArchOps Menu"
-    echo "0. Update Script"
+    echo "0. Check for Updates"
     echo "1. Disable firewall"
     echo "2. Enable firewall"
     echo "3. Show free disk space"
@@ -37,23 +37,15 @@ display_welcome
 function check_new_version {
     remote_version=$(curl -s "https://raw.githubusercontent.com/Chan5k/beta-so/main/version.txt")
 
-    if [[ "$remote_version" != "$VERSION" ]]; then
-        echo "A new version ($remote_version) is available!"
-        echo "Visit the repository for more information."
-    else
+    if [[ "$remote_version" == "$VERSION" ]]; then
         echo "You are using the latest version of the script."
+    else
+        echo "A new version ($remote_version) is available!"
+        echo "Visit the repository for more information and to update: https://github.com/Chan5k/beta-so"
     fi
 }
 
 check_new_version
-
-function update_script {
-    echo "Updating ArchOps..."
-    curl -o archops.sh -L "https://raw.githubusercontent.com/Chan5k/beta-so/main/archops.sh"
-    chmod +x archops.sh
-    echo "Update complete. Please restart the script."
-    exit 0
-}
 
 function security_hardening {
     clear
@@ -190,8 +182,9 @@ while true; do
 
     case $choice in
         0)
-        update_script
-        ;;
+            check_new_version
+            sleep 2
+            ;;
 
     case $choice in
         1)
