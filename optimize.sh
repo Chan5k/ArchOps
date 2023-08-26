@@ -2,6 +2,8 @@
 
 VERSION="1.0"
 
+check_new_version
+
 # ANSI color codes
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -30,6 +32,18 @@ function display_menu {
 
 
 display_welcome
+
+
+function check_new_version {
+    remote_version=$(curl -s "https://raw.githubusercontent.com/Chan5k/beta-so/main/version.txt")
+    
+    if [[ "$remote_version" == "$VERSION" ]]; then
+        echo "You are using the latest version of the script."
+    else
+        echo "A new version ($remote_version) is available!"
+        echo "Visit the repository for more information."
+    fi
+}
 
 
 function security_hardening {
