@@ -14,6 +14,7 @@ function display_welcome {
 
 function display_menu {
     echo "Select an action:"
+    echo "0. Update Script"
     echo "1. Disable firewall"
     echo "2. Enable firewall"
     echo "3. Show free disk space"
@@ -44,6 +45,14 @@ function check_new_version {
 }
 
 check_new_version
+
+function update_script {
+    echo "Updating ArchOps..."
+    curl -o archops.sh -L "https://raw.githubusercontent.com/Chan5k/beta-so/main/archops.sh"
+    chmod +x archops.sh
+    echo "Update complete. Please restart the script."
+    exit 0
+}
 
 function security_hardening {
     clear
@@ -177,6 +186,11 @@ function show_system_info {
 while true; do
     display_menu
     read -p "Enter your choice: " choice
+
+    case $choice in
+        0)
+        update_script
+        ;;
 
     case $choice in
         1)
