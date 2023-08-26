@@ -65,9 +65,9 @@ check_new_version
 
 function update_script {
     echo "Updating ArchOps..."
-    curl -o archops.sh -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/archops.sh"
-    curl -o version.txt -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt"
-    chmod +x archops.sh
+    curl -o "$SCRIPT_DIR/archops.sh" -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/archops.sh"
+    curl -o "$SCRIPT_DIR/version.txt" -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt"
+    chmod +x "$SCRIPT_DIR/archops.sh"
     echo "Update complete. Please restart the script."
     exit 0
 }
