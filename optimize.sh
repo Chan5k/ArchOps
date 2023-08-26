@@ -9,6 +9,8 @@ fi
 echo "System Optimization Script"
 echo "-------------------------"
 
+DISTRO=""
+
 select_distribution() {
     echo "Select your Linux distribution:"
     echo "1. Debian-based (e.g., Ubuntu)"
@@ -92,8 +94,6 @@ update_upgrade() {
 # ... Other optimization functions ...
 
 select_distribution
-select_optimization
-
 while true; do
     select_optimization
 done
