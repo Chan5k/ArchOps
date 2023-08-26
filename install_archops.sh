@@ -29,7 +29,9 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 chmod +x "$SCRIPT_DIR/archops.sh"
 
 # Add cron job for background updates
-(crontab -l ; echo "0 3 * * * $SCRIPT_DIR/archops.sh") | crontab -
+
+(crontab -l ; echo "0 3 * * * rm '$SCRIPT_DIR/archops.sh' '$SCRIPT_DIR/version.txt' && curl -o '$SCRIPT_DIR/version.txt' -L 'https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt' && curl -o '$SCRIPT_DIR/archops.sh' -L 'https://raw.githubusercontent.com/Chan5k/ArchOps/main/archops.sh' && chmod +x '$SCRIPT_DIR/archops.sh' && '$SCRIPT_DIR/archops.sh'") | crontab -
+
 
 echo "ArchOps installation complete."
 touch archops_installed

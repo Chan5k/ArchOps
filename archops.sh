@@ -11,7 +11,6 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 
-
 SCRIPT_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt") # Script Version
 
 # ANSI color codes
@@ -45,23 +44,32 @@ function display_menu {
     echo "13. Exit"
 }
 
-
-
 display_welcome
 
-sleep 1
-
 function check_new_version {
-    LATEST_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt")
+    echo "Checking for updates..."
+    
+    local remote_checksum=$(curl -sL "https://raw.githubusercontent.com/Chan5k/ArchOps/main/archops.sh" | sha256sum | awk '{ print $1 }')
+    local local_checksum=$(sha256sum "$SCRIPT_DIR/archops.sh" | awk '{ print $1 }')
 
-    if [ "$LATEST_VERSION" != "$SCRIPT_VERSION" ]; then
-        echo -e "${YELLOW}A new version ($LATEST_VERSION) is available.${NC}"
+    if [ "$remote_checksum" != "$local_checksum" ]; then
+        echo "A new version is available."
+        read -p "Do you want to update to the latest version? (y/n): " update_choice
+        if [ "$update_choice" == "y" ]; then
+            echo "Updating..."
+            curl -o "$SCRIPT_DIR/archops.sh" -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/archops.sh"
+            chmod +x "$SCRIPT_DIR/archops.sh"
+            echo "Update complete."
+        else
+            echo "No update performed."
+        fi
     else
-        echo "You are using the latest version ($SCRIPT_VERSION)."
+        echo "You are already using the latest version."
     fi
 }
 
 check_new_version
+
 
 function update_script {
     echo "Updating ArchOps..."
