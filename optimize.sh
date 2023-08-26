@@ -17,16 +17,63 @@ function display_menu {
     echo "3. Show free disk space"
     echo "4. Show IP address"
     echo "5. Show DNS Servers in use"
-    echo "6. Change DNS Servers"
-    echo "7. Network Testing"
-    echo "8. Show System Information"
+    echo "6. Network Testing"
+    echo "7. Show System Information"
+    echo "8. Change DNS Servers"
     echo "9. Update system packages"
-    echo "10. Exit"
+    echo "10. Security Hardening"
+    echo "11. Exit"
 }
 
 
 
 display_welcome
+
+
+function security_hardening {
+    clear
+    echo "Security Hardening"
+
+    echo "1. Firewall Review"
+    echo "2. Service Disabling"
+    echo "3. Password Policies"
+    echo "4. Update Software"
+    echo "5. File Permissions"
+    echo "6. SSH Security"
+
+    read -p "Select an option (1-6) or press Enter to return to the main menu: " sec_choice
+
+    case $sec_choice in
+        1)
+            echo "1. Firewall Review: Review and configure firewall rules to allow only necessary network traffic."
+            ;;
+        2)
+            echo "2. Service Disabling: Disable unnecessary or unused services to reduce the attack surface."
+            ;;
+        3)
+            echo "3. Password Policies: Use strong and unique passwords, and consider changing passwords regularly."
+            ;;
+        4)
+            echo "4. Update Software: Keep the system and software up to date to patch security vulnerabilities."
+            ;;
+        5)
+            echo "5. File Permissions: Review file and directory permissions to limit unauthorized access."
+            ;;
+        6)
+            echo "6. SSH Security: Use strong SSH keys and disable root login for SSH."
+            ;;
+        *)
+            echo "Returning to the main menu..."
+            sleep 1
+            clear
+            return
+            ;;
+    esac
+
+    read -p "Press Enter to return to the main menu..."
+    clear
+}
+
 
 function system_update {
     echo "Updating system packages..."
@@ -219,14 +266,17 @@ while true; do
             ;;
 
         10)
+            security_hardening
+            ;;
+        11)
             echo "Exiting."
             exit 0
             ;;
-        *)
-            echo -e "${RED}Invalid choice. Please select a valid option.${NC}"
-            sleep 1
-            read -p "Press Enter to continue..."
-            clear
-            ;;
-    esac
+    *)
+        echo -e "${RED}Invalid choice. Please select a valid option.${NC}"
+        sleep 1
+        read -p "Press Enter to continue..."
+        clear
+        ;;
+esac
 done
