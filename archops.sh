@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPT_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/beta-so/main/version.txt")
+SCRIPT_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt")
 
 # ANSI color codes
 GREEN='\033[0;32m'
@@ -37,7 +37,7 @@ display_welcome
 sleep 1
 
 function check_new_version {
-    LATEST_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/beta-so/main/version.txt")
+    LATEST_VERSION=$(curl -s "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt")
 
     if [ "$LATEST_VERSION" != "$SCRIPT_VERSION" ]; then
         echo -e "${YELLOW}A new version ($LATEST_VERSION) is available.${NC}"
@@ -50,8 +50,8 @@ check_new_version
 
 function update_script {
     echo "Updating ArchOps..."
-    curl -o archops.sh -L "https://raw.githubusercontent.com/Chan5k/beta-so/main/archops.sh"
-    curl -o version.txt -L "https://raw.githubusercontent.com/Chan5k/beta-so/main/version.txt"
+    curl -o archops.sh -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/archops.sh"
+    curl -o version.txt -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt"
     chmod +x archops.sh
     echo "Update complete. Please restart the script."
     exit 0
