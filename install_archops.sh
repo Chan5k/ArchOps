@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [ ! -f "archops_installed" ] || [ ! -f "archops.sh" ] || [ ! -f "version.txt" ]; then
-    echo "Please run the installer (install_archops.sh) before using ArchOps."
-    exit 1
-fi
-
 if [ "$EUID" -ne 0 ]; then
    echo "This script must be run with sudo. Example: sudo ./install_archops.sh"
    exit 1
