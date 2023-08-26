@@ -8,7 +8,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 function display_welcome {
-    echo "ArchOps Menu (Version: $SCRIPT_VERSION)"
+    echo "ArchOps Utility (Version: $SCRIPT_VERSION)"
     sleep 2
 }
 
