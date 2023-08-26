@@ -185,8 +185,6 @@ while true; do
             check_new_version
             sleep 2
             ;;
-
-        case $choice in
         1)
             if command -v firewalld &>/dev/null; then
                 read -p "Are you sure you want to disable the firewall (firewalld)? (y/n): " confirm
