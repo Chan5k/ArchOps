@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.1"
+VERSION="1.1.2"
 
 # ANSI color codes
 GREEN='\033[0;32m'
