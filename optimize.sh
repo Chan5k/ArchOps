@@ -2,8 +2,6 @@
 
 VERSION="1.0"
 
-check_new_version
-
 # ANSI color codes
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -45,6 +43,7 @@ function check_new_version {
     fi
 }
 
+check_new_version
 
 function security_hardening {
     clear
