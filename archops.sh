@@ -190,8 +190,8 @@ while true; do
 
     case $choice in
         0)
-            update_script
-            ;;
+        update_script
+        ;;
 
     case $choice in
         1)
