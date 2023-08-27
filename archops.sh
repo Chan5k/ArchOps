@@ -49,8 +49,7 @@ function display_menu {
     echo "9. Change DNS Servers"
     echo "10. Update system packages"
     echo "11. Security Hardening"
-    echo "12. Update Script"
-    echo "13. Exit"
+    echo "12. Exit"
 }
 
 display_welcome
@@ -361,12 +360,7 @@ while true; do
             security_hardening
             ;;
 
-        12)
-            update_script
-            sleep 3
-            ;;
-
-        13) echo "Exiting."
+        12) echo "Exiting."
             exit 0
             ;;    
     *)
