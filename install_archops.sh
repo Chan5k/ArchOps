@@ -27,7 +27,7 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 # Download ArchOps script and version.txt
 curl -o "$SCRIPT_DIR/archops.sh" -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/archops.sh"
-curl -o "$SCRIPT_DIR/version.txt" -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/install_archops.sh"
+curl -o "$SCRIPT_DIR/version.txt" -L "https://raw.githubusercontent.com/Chan5k/ArchOps/main/version.txt"
 chmod +x "$SCRIPT_DIR/archops.sh"
 
 echo "ArchOps installation complete."
